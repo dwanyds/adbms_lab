@@ -24,7 +24,7 @@ insert into acts values("McDormand","Wonder Boys");
 select title from movies where myear>1997;
 select * from movies where director="Hanson"and  myear>1997;
 select title,rate from movies;
-select movies.title from movies inner join acts on movies.title=acts.title where director="Coen" and actor="McDormand";
-select movies.director,acts.actor from movies  inner join acts on movies.title=acts.title;
+select title from acts where actor="McDormand" and title in (select title from movies where director="coen");
+select distinct movies.director,acts.actor from movies  inner join acts on movies.title=acts.title;
 
 
