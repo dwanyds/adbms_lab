@@ -1,0 +1,9 @@
+create database college;
+use college;
+create table dept(dno varchar(20),dname varchar(20),primary key(dno));
+create table student(sid varchar(10),sex varchar(20),dob varchar(20),dno varchar(20),primary key(sid),foreign key(dno) references dept (dno) on delete cascade);
+create table faculty(f_id varchar(20),fname varchar(20),designation varchar(20), salary integer(20),dno varchar(20),primary key (f_id),foreign key(dno) references dept(dno) on delete cascade) ;
+create table course(cid varchar(20),cname varchar(20),credits integer(20),dno varchar(20),primary key(cid),foreign key(dno)references dept(dno) on delete cascade);
+create table register(sid varchar(20),cid varchar(20),sem varchar(20),foreign key(cid) references course(cid)on delete cascade,foreign key(sid) references student(sid)on delete cascade);
+create table teaching(f_id varchar(20),cid varchar(20),sem varchar(20),foreign key(f_id)references faculty(f_id)on delete cascade,foreign key(cid)references course(cid) on delete cascade);
+create table hostel(hid varchar(20),hname varchar(20),seats varchar(20));
